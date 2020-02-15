@@ -1,7 +1,7 @@
 import React from "react";
 
 const Welcome = () => {
-  return <div>Welcome to Mini Minesweeper</div>;
+  return <div>Please select game mode</div>;
 };
 
 export default Welcome;
