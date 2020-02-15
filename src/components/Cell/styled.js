@@ -21,8 +21,8 @@ export const CellWrapper = styled.div`
         background: #24292e !important;
         border: 1px solid #24292e;
         border-radius: 50%;
-        top: 5px;
-        left: 5px;
+        top: 4px;
+        left: 4px;
         width: 20px;
         height: 20px;
       }

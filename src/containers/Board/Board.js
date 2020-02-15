@@ -12,12 +12,12 @@ const BoardContainer = ({ gameLevel, ...props }) => {
 
   useEffect(() => {
     setupGame(gameLevel);
-  }, [gameLevel.size]);
+  }, [setupGame, gameLevel, gameLevel.size]);
 
   const matrices = useShallowEqualSelector(
     MiniMineSweeperActionsSelectors.getMatrices
   );
-  const isLoading = useShallowEqualSelector(
+  const loading = useShallowEqualSelector(
     MiniMineSweeperActionsSelectors.getLoading
   );
   const error = useShallowEqualSelector(
@@ -25,7 +25,13 @@ const BoardContainer = ({ gameLevel, ...props }) => {
   );
 
   return (
-    <Board {...props} matrices={matrices} isLoading={isLoading} error={error} />
+    <Board
+      {...props}
+      gameLevel={gameLevel}
+      matrices={matrices}
+      loading={loading}
+      error={error}
+    />
   );
 };
 
