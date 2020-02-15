@@ -24,4 +24,7 @@ export const LevelBtnStyled = styled(Link)`
   padding: 15px;
   text-decoration: none;
   display: flex;
+  &:hover {
+    text-decoration: underline;
+  }
 `;

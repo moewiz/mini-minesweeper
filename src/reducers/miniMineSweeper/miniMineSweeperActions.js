@@ -1,4 +1,4 @@
-// import { GAME_STATUS } from "../../constants/game";
+import { BEGINNER, ADVANTAGE } from "../../constants/game";
 
 export const MiniMineSweeperTypes = {
   SETUP_GAME: "MiniMineSweeper/SETUP_GAME",
@@ -7,11 +7,14 @@ export const MiniMineSweeperTypes = {
   NEW_GAME: "MiniMineSweeper/NEW_GAME"
 };
 
+const setupGame = ({ size, mines }) => () => ({
+  type: MiniMineSweeperTypes.SETUP_GAME,
+  payload: { size, mines }
+});
+
 export const MiniMineSweeperActions = {
-  setupGame: ({ size, mines }) => ({
-    type: MiniMineSweeperTypes.SETUP_GAME,
-    payload: { size, mines }
-  }),
+  setupBeginnerGame: setupGame(BEGINNER),
+  setupAdvantageGame: setupGame(ADVANTAGE),
   setupSuccess: matrices => ({
     type: MiniMineSweeperTypes.SETUP_GAME_SUCCES,
     payload: { matrices }

@@ -1,11 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Row from "../Row";
-import { BoardWrapper, LoadingStyled, ErrorStyled } from "./styled";
+import {
+  BoardWrapper,
+  LoadingStyled,
+  ErrorStyled,
+  HeaderWrapper,
+  NewGameStyled,
+  HomeStyled
+} from "./styled";
 
-const Board = ({ matrices, gameLevel, loading, error }) => {
-  const width = gameLevel.size * 32 + 50;
-
+const Board = ({ matrices, onNewGame, loading, error }) => {
   if (loading) {
     return (
       <BoardWrapper>
@@ -23,11 +28,17 @@ const Board = ({ matrices, gameLevel, loading, error }) => {
   }
 
   return (
-    <BoardWrapper style={{ width: `${width}px` }}>
-      {matrices.map((row, index) => (
-        <Row row={row} key={index} />
-      ))}
-    </BoardWrapper>
+    <>
+      <HeaderWrapper>
+        <NewGameStyled onClick={onNewGame}>New game</NewGameStyled>
+        <HomeStyled to="/">Home page</HomeStyled>
+      </HeaderWrapper>
+      <BoardWrapper>
+        {matrices.map((row, index) => (
+          <Row row={row} key={index} />
+        ))}
+      </BoardWrapper>
+    </>
   );
 };
 
@@ -42,10 +53,7 @@ Board.propTypes = {
       })
     )
   ).isRequired,
-  gameLevel: PropTypes.shape({
-    size: PropTypes.number,
-    mines: PropTypes.number
-  }).isRequired,
+  onNewGame: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string
 };

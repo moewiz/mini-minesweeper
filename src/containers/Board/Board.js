@@ -1,18 +1,13 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import {
-  actions as MiniMineSweeperActions,
-  selectors as MiniMineSweeperActionsSelectors
-} from "../../reducers/miniMineSweeper";
-import { useActions, useShallowEqualSelector } from "../../utils/hookRecipes";
+import { selectors as MiniMineSweeperActionsSelectors } from "../../reducers/miniMineSweeper";
+import { useShallowEqualSelector } from "../../utils/hookRecipes";
 import { Board } from "../../components";
 
-const BoardContainer = ({ gameLevel, ...props }) => {
-  const setupGame = useActions(MiniMineSweeperActions.setupGame);
-
+const BoardContainer = ({ gameLevel, setupGame, ...props }) => {
   useEffect(() => {
-    setupGame(gameLevel);
-  }, [setupGame, gameLevel, gameLevel.size]);
+    setupGame();
+  }, [setupGame]);
 
   const matrices = useShallowEqualSelector(
     MiniMineSweeperActionsSelectors.getMatrices
@@ -27,6 +22,7 @@ const BoardContainer = ({ gameLevel, ...props }) => {
   return (
     <Board
       {...props}
+      onNewGame={setupGame}
       gameLevel={gameLevel}
       matrices={matrices}
       loading={loading}
