@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { types } from "../miniMineSweeper";
 import { GAME_STATUS } from "../../constants/game";
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   loading: false,
   error: null,
   gameStatus: GAME_STATUS.NOT_START,

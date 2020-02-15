@@ -2,6 +2,7 @@ import React from "react";
 import { shallow, mount } from "enzyme";
 import Cell from "./Cell";
 import { CellWrapper } from "./styled";
+import { GAME_STATUS } from "../../constants/game";
 
 describe("<Cell />", () => {
   afterEach(() => {
@@ -17,6 +18,7 @@ describe("<Cell />", () => {
         minesAround: 0
       }}
       openCell={openCellMock}
+      gameStatus={GAME_STATUS.NOT_START}
     />
   );
 
