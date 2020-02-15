@@ -19,6 +19,9 @@ export const MiniMineSweeperActions = {
   setupFailed: error => ({
     type: MiniMineSweeperTypes.SETUP_GAME_FAILED,
     payload: { error }
+  }),
+  newGame: () => ({
+    type: MiniMineSweeperTypes.NEW_GAME
   })
 };
 
