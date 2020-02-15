@@ -4,7 +4,8 @@ export const MiniMineSweeperTypes = {
   SETUP_GAME: "MiniMineSweeper/SETUP_GAME",
   SETUP_GAME_SUCCES: "MiniMineSweeper/SETUP_GAME_SUCCES",
   SETUP_GAME_FAILED: "MiniMineSweeper/SETUP_GAME_FAILED",
-  NEW_GAME: "MiniMineSweeper/NEW_GAME"
+  NEW_GAME: "MiniMineSweeper/NEW_GAME",
+  OPEN_CELL: "MiniMineSweeper/OPEN_CELL"
 };
 
 const setupGame = ({ size, mines }) => () => ({
@@ -25,15 +26,25 @@ export const MiniMineSweeperActions = {
   }),
   newGame: () => ({
     type: MiniMineSweeperTypes.NEW_GAME
+  }),
+  openCell: cell => ({
+    type: MiniMineSweeperTypes.OPEN_CELL,
+    payload: {
+      cell
+    }
   })
 };
 
 const getMatrices = ({ miniMineSweeper }) => miniMineSweeper.matrices;
 const getLoading = ({ miniMineSweeper }) => miniMineSweeper.loading;
 const getError = ({ miniMineSweeper }) => miniMineSweeper.error;
+const getGameStatus = ({ miniMineSweeper }) => miniMineSweeper.gameStatus;
+const getStartTime = ({ miniMineSweeper }) => miniMineSweeper.startTime;
 
 export const MiniMineSweeperSelectors = {
   getMatrices,
   getLoading,
-  getError
+  getError,
+  getGameStatus,
+  getStartTime
 };

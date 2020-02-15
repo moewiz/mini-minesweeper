@@ -1,6 +1,6 @@
 export const BEGINNER = {
-  size: 9,
-  mines: 10
+  size: 3,
+  mines: 1
 };
 
 export const ADVANTAGE = {

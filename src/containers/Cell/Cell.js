@@ -1,12 +1,16 @@
 import React from "react";
 import { Cell } from "../../components";
-import { GAME_STATUS } from "../../constants/game";
+import {
+  actions as MiniMineSweeperActions,
+  selectors as MiniMineSweeperSelectors
+} from "../../reducers/miniMineSweeper";
+import { useShallowEqualSelector, useActions } from "../../utils/hookRecipes";
 
 const CellContainer = props => {
-  const openCell = cell => {
-    console.log("click on cell", cell);
-  };
-  const gameStatus = GAME_STATUS.WIN;
+  const openCell = useActions(MiniMineSweeperActions.openCell);
+  const gameStatus = useShallowEqualSelector(
+    MiniMineSweeperSelectors.getGameStatus
+  );
 
   return <Cell {...props} openCell={openCell} gameStatus={gameStatus} />;
 };

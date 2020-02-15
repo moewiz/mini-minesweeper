@@ -1,4 +1,4 @@
-import { takeLeading, call, put } from "redux-saga/effects";
+import { takeLeading, takeEvery, call, put } from "redux-saga/effects";
 import _ from "lodash";
 import {
   types as MiniMineSweeperTypes,
@@ -53,11 +53,23 @@ function getAPIErrorMessage(error, defaultMessage = "Internal server error") {
 
 function* setupGame({ payload: { size, mines } }) {
   try {
-    const response = yield call(MiniMineSweeperService.fetchMines, {
-      size,
-      mines
-    });
-    const { data: minesList } = response.data;
+    // const response = yield call(MiniMineSweeperService.fetchMines, {
+    //   size,
+    //   mines
+    // });
+    // const { data: minesList } = response.data;
+    const minesList = [
+      { x: 1, y: 1 }
+      // { x: 6, y: 3 },
+      // { x: 2, y: 7 },
+      // { x: 1, y: 8 }
+      // { x: 8, y: 8 },
+      // { x: 5, y: 2 },
+      // { x: 6, y: 2 },
+      // { x: 4, y: 1 },
+      // { x: 3, y: 3 },
+      // { x: 2, y: 6 }
+    ];
     const matrices = generateMatrices(size, minesList);
     yield put(MiniMineSweeperActions.setupSuccess(matrices));
   } catch (error) {
@@ -65,6 +77,23 @@ function* setupGame({ payload: { size, mines } }) {
   }
 }
 
+function exploreNeighbor() {}
+
+function openCell({ payload: { cell } }) {
+  if (cell.isOpen) {
+    return;
+  }
+  if (cell.minesAround === -1) {
+    return;
+  }
+
+  if (cell.minesAround === 0) {
+    // explore neighbor
+    exploreNeighbor(cell);
+  }
+}
+
 export default function*() {
   yield takeLeading(MiniMineSweeperTypes.SETUP_GAME, setupGame);
+  yield takeEvery(MiniMineSweeperTypes.OPEN_CELL, openCell);
 }

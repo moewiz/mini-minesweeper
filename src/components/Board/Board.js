@@ -7,7 +7,7 @@ import {
   ErrorStyled,
   HeaderWrapper,
   NewGameStyled,
-  HomeStyled
+  HomeLinkStyled
 } from "./styled";
 
 const Board = ({ matrices, onNewGame, loading, error }) => {
@@ -31,7 +31,7 @@ const Board = ({ matrices, onNewGame, loading, error }) => {
     <>
       <HeaderWrapper>
         <NewGameStyled onClick={onNewGame}>New game</NewGameStyled>
-        <HomeStyled to="/">Home page</HomeStyled>
+        <HomeLinkStyled to="/">Home page</HomeLinkStyled>
       </HeaderWrapper>
       <BoardWrapper>
         {matrices.map((row, index) => (

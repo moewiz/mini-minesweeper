@@ -1,29 +1,10 @@
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
-export const BoardWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  margin-top: 30px;
-`;
-
-export const LoadingStyled = styled.span`
-  font-size: 20px;
-`;
-
-export const ErrorStyled = styled.span`
-  font-size: 20px;
-  color: #ff4141;
-`;
-
-export const HeaderWrapper = styled.div`
+export const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
 `;
 
 const HeaderBtn = css`
@@ -43,4 +24,10 @@ export const NewGameStyled = styled.div`
 
 export const HomeLinkStyled = styled(Link)`
   ${HeaderBtn}
+`;
+
+export const MessageStyled = styled.div`
+  font-size: 20px;
+  text-align: center;
+  margin-top: 5px;
 `;
