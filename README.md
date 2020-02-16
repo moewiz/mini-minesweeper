@@ -1,3 +1,5 @@
+# Mini Minesweeper
+
 ## Live demo
 
 Heroku app: [live demo](https://mini-minesweeper-moewiz.herokuapp.com/)

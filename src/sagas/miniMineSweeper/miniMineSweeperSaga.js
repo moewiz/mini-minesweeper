@@ -80,7 +80,7 @@ function floodFill(x, y, matrices) {
     queue.push({ x, y });
 
     while (queue.length > 0) {
-      const current = queue.pop(); // Front queue
+      const current = queue.pop();
       // Check 8 neighbors around the current cell to push into the Queue
       for (let xoff = -1; xoff <= 1; xoff++) {
         for (let yoff = -1; yoff <= 1; yoff++) {
@@ -95,7 +95,7 @@ function floodFill(x, y, matrices) {
           if (matrices[cx][cy].isOpen || neighbors[nKey]) continue;
 
           neighbors[nKey] = { x: cx, y: cy };
-          // don't push if encounter a barrier
+          // Don't push if encounter a barrier
           if (matrices[cx][cy].minesAround > 0) continue;
 
           queue.push({ x: cx, y: cy });
