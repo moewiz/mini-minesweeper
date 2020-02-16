@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import _ from "lodash";
 import { types } from "../miniMineSweeper";
 import { GAME_STATUS } from "../../constants/game";
 
@@ -67,7 +68,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       }
       const { matrices, unOpenedCells, mines, gameStatus } = state;
       // Win if
-      if (unOpenedCells - 1 === mines) {
+      if (unOpenedCells - 1 <= mines) {
         return {
           ...state,
           gameStatus: GAME_STATUS.WIN,
@@ -97,6 +98,35 @@ export default (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         matrices: updatedMatrices,
         unOpenedCells: unOpenedCells - 1
+      };
+    }
+    case types.OPEN_NEIGHBORS: {
+      const { neighbors } = payload;
+      const { unOpenedCells, matrices } = state;
+
+      if (unOpenedCells - neighbors.length === 0) {
+        return {
+          ...state,
+          gameStatus: GAME_STATUS.WIN,
+          unOpenedCells: 0
+        };
+      }
+
+      // Loop to open all neighbors
+      const updatedMatrices = [...matrices];
+      _.forEach(neighbors, neighbor => {
+        const { x, y } = neighbor;
+        const updatedCell = { ...updatedMatrices[x][y], isOpen: true };
+        const updatedRow = [...updatedMatrices[x]];
+
+        updatedRow[y] = updatedCell;
+        updatedMatrices[x] = updatedRow;
+      });
+
+      return {
+        ...state,
+        matrices: updatedMatrices,
+        unOpenedCells: unOpenedCells - neighbors.length
       };
     }
     default:

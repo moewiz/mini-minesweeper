@@ -1,8 +1,9 @@
-import { takeLeading, takeEvery, call, put } from "redux-saga/effects";
+import { takeLeading, takeEvery, call, put, select } from "redux-saga/effects";
 import _ from "lodash";
 import {
   types as MiniMineSweeperTypes,
-  actions as MiniMineSweeperActions
+  actions as MiniMineSweeperActions,
+  selectors as MiniMineSweeperSelectors
 } from "../../reducers/miniMineSweeper";
 import MiniMineSweeperService from "./miniMineSweeperService";
 
@@ -53,11 +54,23 @@ function getAPIErrorMessage(error, defaultMessage = "Internal server error") {
 
 export function* setupGame({ payload: { size, mines } }) {
   try {
-    const response = yield call(MiniMineSweeperService.fetchMines, {
-      size,
-      mines
-    });
-    const { data: minesList } = response.data;
+    // const response = yield call(MiniMineSweeperService.fetchMines, {
+    //   size,
+    //   mines
+    // });
+    // const { data: minesList } = response.data;
+    const minesList = [
+      { x: 1, y: 1 },
+      { x: 6, y: 3 },
+      { x: 2, y: 7 },
+      { x: 1, y: 8 },
+      { x: 8, y: 8 },
+      { x: 5, y: 2 },
+      { x: 6, y: 2 },
+      { x: 4, y: 1 },
+      { x: 3, y: 3 },
+      { x: 2, y: 6 }
+    ];
     const matrices = generateMatrices(size, minesList);
     yield put(MiniMineSweeperActions.setupSuccess(matrices));
   } catch (error) {
@@ -65,23 +78,56 @@ export function* setupGame({ payload: { size, mines } }) {
   }
 }
 
-function exploreNeighbor() {}
+/**
+ * Non-recursive
+ * @param {number} x
+ * @param {number} y
+ * @param {Array} matrices
+ */
+function floodFill(x, y, matrices) {
+  const neighbors = {};
+  const queue = [];
+  const size = matrices.length;
+  if (x >= 0 && x < size && y >= 0 && y < size) {
+    queue.push({ x, y });
 
-function openCell({ payload: { cell } }) {
-  if (cell.isOpen) {
+    while (queue.length > 0) {
+      const current = queue.pop(); // Front queue
+      // Check 8 neighbors around the current cell to push into the Queue
+      for (let xoff = -1; xoff <= 1; xoff++) {
+        for (let yoff = -1; yoff <= 1; yoff++) {
+          const cx = current.x + xoff;
+          const cy = current.y + yoff;
+
+          // Ignore the cell out of the board
+          if (cx < 0 || cx >= size) continue;
+          if (cy < 0 || cy >= size) continue;
+          // or revealed, visited neightbor
+          const nKey = `${cx}x${cy}`;
+          if (matrices[cx][cy].isOpen || neighbors[nKey]) continue;
+
+          neighbors[nKey] = { x: cx, y: cy };
+          // don't push if encounter a barrier
+          if (matrices[cx][cy].minesAround > 0) continue;
+
+          queue.push({ x: cx, y: cy });
+        }
+      }
+    }
+  }
+  return Object.values(neighbors);
+}
+
+function* handleOpenCell({ payload: { cell } }) {
+  if (cell.isOpen || cell.minesAround > 0) {
     return;
   }
-  if (cell.minesAround === -1) {
-    return;
-  }
-
-  if (cell.minesAround === 0) {
-    // explore neighbor
-    exploreNeighbor(cell);
-  }
+  const matrices = yield select(MiniMineSweeperSelectors.getMatrices);
+  const neighbors = floodFill(cell.x, cell.y, matrices);
+  yield put(MiniMineSweeperActions.openNeighbors(neighbors));
 }
 
 export default function*() {
   yield takeLeading(MiniMineSweeperTypes.SETUP_GAME, setupGame);
-  yield takeEvery(MiniMineSweeperTypes.OPEN_CELL, openCell);
+  yield takeEvery(MiniMineSweeperTypes.OPEN_CELL, handleOpenCell);
 }
