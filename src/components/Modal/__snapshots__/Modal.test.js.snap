@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal /> match snapshot 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Modal
+      duration="00:00:00"
+      gameStatus={2}
+      setupGame={[MockFunction]}
+    >
+      <Popup
+        arrow={true}
+        arrowStyle={Object {}}
+        className=""
+        closeOnDocumentClick={true}
+        closeOnEscape={true}
+        contentStyle={Object {}}
+        defaultOpen={false}
+        disabled={false}
+        keepTooltipInside={false}
+        lockScroll={false}
+        modal={false}
+        mouseEnterDelay={100}
+        mouseLeaveDelay={100}
+        offsetX={0}
+        offsetY={0}
+        on={
+          Array [
+            "click",
+          ]
+        }
+        onClose={[Function]}
+        onOpen={[Function]}
+        open={true}
+        overlayStyle={Object {}}
+        position="bottom center"
+        repositionOnResize={true}
+        trigger={null}
+      >
+        <div
+          key="H"
+          style={
+            Object {
+              "left": "0px",
+              "position": "absolute",
+              "top": "0px",
+            }
+          }
+        />
+        <div
+          className="popup-overlay "
+          key="O"
+          onClick={[Function]}
+          style={
+            Object {
+              "background": "rgba(0, 0, 0,0.5)",
+              "bottom": "0",
+              "display": "flex",
+              "left": "0",
+              "position": "fixed",
+              "right": "0",
+              "top": "0",
+              "zIndex": "999",
+            }
+          }
+        >
+          <div
+            className="popup-content "
+            key="C"
+            onClick={[Function]}
+            style={
+              Object {
+                "background": "rgb(255, 255, 255)",
+                "border": "1px solid rgb(187, 187, 187)",
+                "margin": "auto",
+                "padding": "5px",
+                "position": "relative",
+                "width": "50%",
+              }
+            }
+          >
+            <div>
+              <styled.div>
+                <div
+                  className="sc-AxhCb kCEjYJ"
+                >
+                  🏆
+                </div>
+              </styled.div>
+              <styled.div>
+                <div
+                  className="sc-AxhCb kCEjYJ"
+                >
+                  You 
+                  won
+                   the game in
+                   
+                  00:00:00
+                </div>
+              </styled.div>
+              <styled.div>
+                <div
+                  className="sc-AxjAm bGbvop"
+                >
+                  <styled.div
+                    onClick={[MockFunction]}
+                  >
+                    <div
+                      className="sc-AxirZ hIyvNJ"
+                      onClick={[MockFunction]}
+                    >
+                      New game
+                    </div>
+                  </styled.div>
+                  <Styled(Link)
+                    to="/"
+                  >
+                    <Link
+                      className="sc-AxiKw dVolwd"
+                      to="/"
+                    >
+                      <LinkAnchor
+                        className="sc-AxiKw dVolwd"
+                        href="/"
+                        navigate={[Function]}
+                      >
+                        <a
+                          className="sc-AxiKw dVolwd"
+                          href="/"
+                          onClick={[Function]}
+                        >
+                          Home page
+                        </a>
+                      </LinkAnchor>
+                    </Link>
+                  </Styled(Link)>
+                </div>
+              </styled.div>
+            </div>
+          </div>
+        </div>
+      </Popup>
+    </Modal>
+  </Router>
+</BrowserRouter>
+`;

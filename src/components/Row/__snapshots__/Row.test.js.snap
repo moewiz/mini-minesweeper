@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Row /> should match snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Row
+    row={
+      Array [
+        Object {
+          "isOpen": false,
+          "minesAround": 0,
+          "x": 0,
+          "y": 0,
+        },
+        Object {
+          "isOpen": false,
+          "minesAround": 0,
+          "x": 0,
+          "y": 1,
+        },
+        Object {
+          "isOpen": false,
+          "minesAround": 0,
+          "x": 0,
+          "y": 2,
+        },
+        Object {
+          "isOpen": false,
+          "minesAround": 0,
+          "x": 0,
+          "y": 3,
+        },
+      ]
+    }
+  >
+    <styled.div>
+      <div
+        className="sc-fznKkj iOOVlW"
+      >
+        <CellContainer
+          cell={
+            Object {
+              "isOpen": false,
+              "minesAround": 0,
+              "x": 0,
+              "y": 0,
+            }
+          }
+          key="0"
+        >
+          <Cell
+            cell={
+              Object {
+                "isOpen": false,
+                "minesAround": 0,
+                "x": 0,
+                "y": 0,
+              }
+            }
+            gameStatus={0}
+            openCell={[Function]}
+          >
+            <styled.div
+              isMine={false}
+              isOpen={false}
+              onClick={[Function]}
+            >
+              <div
+                className="sc-fzozJi cgtCDw"
+                onClick={[Function]}
+              />
+            </styled.div>
+          </Cell>
+        </CellContainer>
+        <CellContainer
+          cell={
+            Object {
+              "isOpen": false,
+              "minesAround": 0,
+              "x": 0,
+              "y": 1,
+            }
+          }
+          key="1"
+        >
+          <Cell
+            cell={
+              Object {
+                "isOpen": false,
+                "minesAround": 0,
+                "x": 0,
+                "y": 1,
+              }
+            }
+            gameStatus={0}
+            openCell={[Function]}
+          >
+            <styled.div
+              isMine={false}
+              isOpen={false}
+              onClick={[Function]}
+            >
+              <div
+                className="sc-fzozJi cgtCDw"
+                onClick={[Function]}
+              />
+            </styled.div>
+          </Cell>
+        </CellContainer>
+        <CellContainer
+          cell={
+            Object {
+              "isOpen": false,
+              "minesAround": 0,
+              "x": 0,
+              "y": 2,
+            }
+          }
+          key="2"
+        >
+          <Cell
+            cell={
+              Object {
+                "isOpen": false,
+                "minesAround": 0,
+                "x": 0,
+                "y": 2,
+              }
+            }
+            gameStatus={0}
+            openCell={[Function]}
+          >
+            <styled.div
+              isMine={false}
+              isOpen={false}
+              onClick={[Function]}
+            >
+              <div
+                className="sc-fzozJi cgtCDw"
+                onClick={[Function]}
+              />
+            </styled.div>
+          </Cell>
+        </CellContainer>
+        <CellContainer
+          cell={
+            Object {
+              "isOpen": false,
+              "minesAround": 0,
+              "x": 0,
+              "y": 3,
+            }
+          }
+          key="3"
+        >
+          <Cell
+            cell={
+              Object {
+                "isOpen": false,
+                "minesAround": 0,
+                "x": 0,
+                "y": 3,
+              }
+            }
+            gameStatus={0}
+            openCell={[Function]}
+          >
+            <styled.div
+              isMine={false}
+              isOpen={false}
+              onClick={[Function]}
+            >
+              <div
+                className="sc-fzozJi cgtCDw"
+                onClick={[Function]}
+              />
+            </styled.div>
+          </Cell>
+        </CellContainer>
+      </div>
+    </styled.div>
+  </Row>
+</Provider>
+`;

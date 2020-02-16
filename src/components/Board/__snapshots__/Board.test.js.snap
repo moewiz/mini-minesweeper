@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Board /> should match snapshot 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Board
+      error={null}
+      loading={false}
+      matrices={
+        Array [
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+        ]
+      }
+      onNewGame={[MockFunction]}
+    >
+      <styled.div>
+        <div
+          className="sc-fzplWN gYxPsW"
+        >
+          <styled.div
+            onClick={[MockFunction]}
+          >
+            <div
+              className="sc-fznyAO OjnoA"
+              onClick={[MockFunction]}
+            >
+              New game
+            </div>
+          </styled.div>
+          <Styled(Link)
+            to="/"
+          >
+            <Link
+              className="sc-fznKkj eKGikx"
+              to="/"
+            >
+              <LinkAnchor
+                className="sc-fznKkj eKGikx"
+                href="/"
+                navigate={[Function]}
+              >
+                <a
+                  className="sc-fznKkj eKGikx"
+                  href="/"
+                  onClick={[Function]}
+                >
+                  Home page
+                </a>
+              </LinkAnchor>
+            </Link>
+          </Styled(Link)>
+        </div>
+      </styled.div>
+      <styled.div>
+        <div
+          className="sc-fzozJi cArkNM"
+        >
+          <Row
+            key="0"
+            row={Array []}
+          >
+            <styled.div>
+              <div
+                className="sc-AxmLO MKJBh"
+              />
+            </styled.div>
+          </Row>
+          <Row
+            key="1"
+            row={Array []}
+          >
+            <styled.div>
+              <div
+                className="sc-AxmLO MKJBh"
+              />
+            </styled.div>
+          </Row>
+          <Row
+            key="2"
+            row={Array []}
+          >
+            <styled.div>
+              <div
+                className="sc-AxmLO MKJBh"
+              />
+            </styled.div>
+          </Row>
+          <Row
+            key="3"
+            row={Array []}
+          >
+            <styled.div>
+              <div
+                className="sc-AxmLO MKJBh"
+              />
+            </styled.div>
+          </Row>
+        </div>
+      </styled.div>
+    </Board>
+  </Router>
+</BrowserRouter>
+`;

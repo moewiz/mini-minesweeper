@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Welcome /> should match snapshot 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Welcome
+      newGame={[MockFunction]}
+    >
+      <styled.div>
+        <div
+          className="sc-AxjAm brmHuN"
+        >
+          <h3>
+            Please select game level
+          </h3>
+          <styled.div>
+            <div
+              className="sc-AxirZ knUpuA"
+            >
+              <Styled(Link)
+                to="/beginner"
+              >
+                <Link
+                  className="sc-AxiKw bIYgMA"
+                  to="/beginner"
+                >
+                  <LinkAnchor
+                    className="sc-AxiKw bIYgMA"
+                    href="/beginner"
+                    navigate={[Function]}
+                  >
+                    <a
+                      className="sc-AxiKw bIYgMA"
+                      href="/beginner"
+                      onClick={[Function]}
+                    >
+                      Beginner
+                    </a>
+                  </LinkAnchor>
+                </Link>
+              </Styled(Link)>
+              <Styled(Link)
+                to="/advantage"
+              >
+                <Link
+                  className="sc-AxiKw bIYgMA"
+                  to="/advantage"
+                >
+                  <LinkAnchor
+                    className="sc-AxiKw bIYgMA"
+                    href="/advantage"
+                    navigate={[Function]}
+                  >
+                    <a
+                      className="sc-AxiKw bIYgMA"
+                      href="/advantage"
+                      onClick={[Function]}
+                    >
+                      Advantage
+                    </a>
+                  </LinkAnchor>
+                </Link>
+              </Styled(Link)>
+            </div>
+          </styled.div>
+        </div>
+      </styled.div>
+    </Welcome>
+  </Router>
+</BrowserRouter>
+`;

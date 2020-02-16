@@ -25,9 +25,11 @@ describe("<Cell />", () => {
   it("should render without throwing an error", () => {
     expect(shallow(CellComponent).length).toBe(1);
   });
+
   it("should match snapshot", () => {
     expect(shallow(CellComponent)).toMatchSnapshot();
   });
+
   it("should call openCellMock 1 time when clicked", () => {
     const CellWrapperElement = mount(CellComponent)
       .find(CellWrapper)
