@@ -8,6 +8,8 @@ import {
 } from "../../reducers/miniMineSweeper";
 import { useActions, useShallowEqualSelector } from "../../utils/hookRecipes";
 
+const addZero = n => (n < 10 ? `0${n}` : n);
+
 const ModalContainer = () => {
   const [setupBeginner, setupAdvanced] = useActions([
     MiniMineSweeperActions.setupBeginnerGame,
@@ -21,11 +23,11 @@ const ModalContainer = () => {
   const startTime = useShallowEqualSelector(
     MiniMineSweeperSelectors.getStartTime
   );
-  const diff = startTime ? dayjs().diff(startTime, "millisecond") : 0;
-  const duration = "00:00:05";
-  // const duration = dayjs(diff)
-  //   .utc()
-  //   .format("HH:mm:ss");
+  const seconds = startTime ? dayjs().diff(startTime, "second") : 0;
+  const hh = addZero(parseInt(seconds / 3600, 10));
+  const mm = addZero(parseInt((seconds / 60) % 60, 10));
+  const ss = addZero(parseInt(seconds % 60, 10));
+  const duration = `${hh}:${mm}:${ss}`;
 
   if (pathname.includes("beginner")) setupGame = setupBeginner;
   else setupGame = setupAdvanced;

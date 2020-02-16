@@ -14,17 +14,19 @@ const Modal = ({ gameStatus, duration, setupGame }) => {
     <Popup
       open={gameStatus === GAME_STATUS.WIN || gameStatus === GAME_STATUS.LOSE}
     >
-      <MessageStyled>
-        {gameStatus === GAME_STATUS.LOSE ? "💀" : "🏆"}
-      </MessageStyled>
-      <MessageStyled>
-        You {gameStatus === GAME_STATUS.LOSE ? "lost" : "won"} the game in{" "}
-        {duration}
-      </MessageStyled>
-      <ButtonWrapper>
-        <NewGameStyled onClick={setupGame}>New game</NewGameStyled>
-        <HomeLinkStyled to="/">Home page</HomeLinkStyled>
-      </ButtonWrapper>
+      <div>
+        <MessageStyled>
+          {gameStatus === GAME_STATUS.LOSE ? "💀" : "🏆"}
+        </MessageStyled>
+        <MessageStyled>
+          You {gameStatus === GAME_STATUS.LOSE ? "lost" : "won"} the game in{" "}
+          {duration}
+        </MessageStyled>
+        <ButtonWrapper>
+          <NewGameStyled onClick={setupGame}>New game</NewGameStyled>
+          <HomeLinkStyled to="/">Home page</HomeLinkStyled>
+        </ButtonWrapper>
+      </div>
     </Popup>
   );
 };
