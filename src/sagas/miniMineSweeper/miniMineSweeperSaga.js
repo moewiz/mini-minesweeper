@@ -53,23 +53,11 @@ function getAPIErrorMessage(error, defaultMessage = "Internal server error") {
 
 export function* setupGame({ payload: { size, mines } }) {
   try {
-    // const response = yield call(MiniMineSweeperService.fetchMines, {
-    //   size,
-    //   mines
-    // });
-    // const { data: minesList } = response.data;
-    const minesList = [
-      { x: 1, y: 1 },
-      { x: 6, y: 3 },
-      { x: 2, y: 7 },
-      { x: 1, y: 8 },
-      { x: 8, y: 8 },
-      { x: 5, y: 2 },
-      { x: 6, y: 2 },
-      { x: 4, y: 1 },
-      { x: 3, y: 3 },
-      { x: 2, y: 6 }
-    ];
+    const response = yield call(MiniMineSweeperService.fetchMines, {
+      size,
+      mines
+    });
+    const { data: minesList } = response.data;
     const matrices = generateMatrices(size, minesList);
     yield put(MiniMineSweeperActions.setupSuccess(matrices));
   } catch (error) {

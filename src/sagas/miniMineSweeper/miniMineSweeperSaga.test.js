@@ -5,12 +5,6 @@ import MiniMineSweeperService from "./miniMineSweeperService";
 import { MiniMineSweeperActions } from "../../reducers/miniMineSweeper/miniMineSweeperActions";
 
 describe("test setupGame", () => {
-  const gen = setupGame({ payload: BEGINNER });
-  // it("should call api fetch mines", () => {
-  //   expect(gen.next().value).toEqual(
-  //     call(MiniMineSweeperService.fetchMines, BEGINNER)
-  //   );
-  // });
   const minesList = [
     { x: 1, y: 1 },
     { x: 6, y: 3 },
@@ -24,17 +18,26 @@ describe("test setupGame", () => {
     { x: 2, y: 6 }
   ];
   const response = {
-    res: {
-      data: {
-        data: minesList
-      }
+    data: {
+      data: minesList
     }
   };
   const matrices = generateMatrices(BEGINNER.size, minesList);
+  const gen = setupGame({ payload: BEGINNER });
 
-  // it("should put the matrices", () => {
-  //   expect(gen.next(response).value).toEqual(
-  //     put(MiniMineSweeperActions.setupSuccess(matrices))
-  //   );
-  // });
+  it("should call api fetch mines", () => {
+    expect(gen.next().value).toEqual(
+      call(MiniMineSweeperService.fetchMines, BEGINNER)
+    );
+  });
+
+  it("should put the matrices", () => {
+    expect(gen.next(response).value).toEqual(
+      put(MiniMineSweeperActions.setupSuccess(matrices))
+    );
+  });
+
+  it("should finished", () => {
+    expect(gen.next().done).toBe(true);
+  });
 });
